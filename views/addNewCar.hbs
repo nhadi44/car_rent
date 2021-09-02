@@ -1,0 +1,56 @@
+{{> header}}
+
+{{#if message}}
+<div class="alert alert-{{message.type}}" role="alert">
+    {{message.message}}
+</div>
+{{/if}}
+
+{{> hero}}
+
+<div class="container d-flex">
+    <form action="/register-car" class="register-car" method="POST">
+        <h5 class="text-center">Register New Car</h5>
+        <div class="mb-2 input-form">
+            <label for="type" class="form-label">Type</label>
+            <select name="type_id" id="type_id" class="form-control form-select">
+                <option value="" selected>Select car type</option>
+                {{#each carType}}
+                <option value="{{this.id}}">{{this.name}}</option>
+                {{/each}}
+            </select>
+        </div>
+        <div class="mb-2 input-form">
+            <label for="type" class="form-label">Brand</label>
+            <select name="brand_id" id="brand_id" class="form-control form-select">
+                <option value="" selected>Select car brand</option>
+                {{#each carBrand}}
+                <option value="{{this.id}}">{{this.name}}</option>
+                {{/each}}
+            </select>
+        </div>
+        <div class="mb-2 input-form">
+            <label for="name" class="form-label">Car Name</label>
+            <input type="text" class="form-control" id="name" name="name">
+        </div>
+        <div class="mb-2 input-form">
+            <label for="plat_number" class="form-label">Plat Number</label>
+            <input type="text" class="form-control" id="plat_number" name="plat_number">
+        </div>
+        <div class="mb-2 input-form">
+            <label for="price" class="form-label">Price</label>
+            <input type="number" class="form-control" id="price" name="price">
+        </div>
+        <div class="mb-2 input-form">
+            <label for="photo" class="form-label">Photo</label>
+            <input type="file" class="form-control" id="photo" name="photo">
+        </div>
+        <div class="mb-2 input-form">
+            <label for="stock" class="form-label">Stock</label>
+            <input type="number" class="form-control" id="stock" name="stock">
+        </div>
+        <button type="submit" class="btn btn-danger btn-input">Submit</button>
+    </form>
+</div>
+
+{{> footer}}

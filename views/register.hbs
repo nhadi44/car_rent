@@ -1,0 +1,45 @@
+{{> header}}
+
+{{#if message}}
+<div class="alert alert-{{message.type}}" role="alert">
+    {{message.message}}
+</div>
+{{/if}}
+
+{{> hero}}
+
+<div class="container d-flex">
+    <form action="/register" class="register-style" method="POST">
+        <h5 class="text-center">Sign Up</h5>
+        <div class="mb-2 input-form">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" name="email">
+        </div>
+        <div class="mb-2 input-form">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" name="password">
+        </div>
+        <div class="mb-2 input-form">
+            <label for="no_ktp" class="form-label">No KTP</label>
+            <input type="number" class="form-control" id="no_ktp" name="no_ktp">
+        </div>
+        <div class="mb-2 input-form">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" class="form-control" id="name" name="name">
+        </div>
+        <div class="mb-2 input-form">
+            <label for="address" class="form-label">Address</label>
+            <textarea name="address" id="address" cols="3" rows="3" class="form-control"></textarea>
+        </div>
+        <div class="mb-2 input-form">
+            <label for="phone" class="form-label">Phone</label>
+            <input type="text" class="form-control" id="phone" name="phone">
+        </div>
+        {{!-- <div class="mb-2 input-form">
+            <input type="number" class="form-control" id="status" name="status" value="0" hidden>
+        </div> --}}
+        <button type="submit" class="btn btn-danger btn-input">Submit</button>
+    </form>
+</div>
+
+{{>footer}}

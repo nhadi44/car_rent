@@ -1,0 +1,26 @@
+{{> header}}
+
+{{#if message}}
+<div class="alert alert-{{message.type}}" role="alert">
+    {{message.message}}
+</div>
+{{/if}}
+
+{{> hero}}
+
+<div class="container">
+    <form action="/login" class="login-style" method="POST">
+        <h5 class="text-center">Login</h5>
+        <div class="mb-2 input-form">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" name="email">
+        </div>
+        <div class="mb-2 input-form">
+            <label for="email" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" name="password">
+        </div>
+        <button type="submit" class="btn btn-danger btn-input">Login</button>
+    </form>
+</div>
+
+{{> footer}}

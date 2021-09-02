@@ -1,0 +1,119 @@
+.btn-signin {
+  margin-left: 30px;
+  margin-right: 10px;
+  background-color: white;
+  color: black;
+}
+
+.btn-signin:hover {
+  background-color: black;
+  color: white;
+}
+
+.btn-signup {
+  background-color: black;
+  color: white;
+}
+
+.btn-signup:hover {
+  background-color: white;
+  color: black;
+}
+
+.cars-menu {
+  margin-bottom: 2em;
+}
+
+.cars-menu li a {
+  padding-left: 50px;
+  padding-right: 50px;
+  color: black;
+  text-decoration: none;
+}
+
+.cars-menu li a:hover {
+  background-color: #efefef;
+  color: black;
+  border-radius: 10px;
+}
+
+.img-slide {
+  height: 100%;
+  border-radius: 10px;
+  background-size: cover;
+}
+
+.text-footer a {
+  text-decoration: none;
+}
+
+.img-icons {
+  width: 30px;
+  height: 30px;
+}
+
+.login-style {
+  background: rgba(208, 208, 208, 0.39);
+  height: 35%;
+  margin-bottom: 10em;
+  margin-top: 120px;
+  margin-left: 120px;
+  margin-right: 220px;
+  padding: 20px 60px;
+}
+
+.btn-input {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.register-style,
+.register-car {
+  width: 100%;
+  background: rgba(208, 208, 208, 0.39);
+  height: 35%;
+  margin-bottom: 5em;
+  margin-top: 3em;
+  margin-left: 120px;
+  margin-right: 220px;
+  padding: 20px 60px;
+}
+
+.drop-user a i {
+  margin-left: 32px;
+}
+
+.img-cars {
+  width: 360px;
+  height: 250px;
+  margin: 2em 2em;
+  border-radius: 10px;
+}
+
+.text-transaction {
+  margin-top: 28px;
+}
+
+.text-idr {
+  color: #6d6d6d;
+}
+
+.form-rent {
+  background-color: rgba(229, 229, 229, 0.651);
+  border-radius: 10px;
+  padding: 50px 50px;
+  margin: 30px 0;
+}
+
+.btn-rent {
+  width: 100%;
+}
+
+.bg-transaction {
+  padding: 8em;
+}
+
+.bg-transaction i {
+  color: rgba(23, 175, 56, 1);
+  padding-bottom: 30px;
+}

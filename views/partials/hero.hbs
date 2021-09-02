@@ -1,0 +1,28 @@
+<header>
+  <nav class="navbar navbar-light">
+    <div class="container justify-content-start">
+      <a class="navbar-brand" href="/">Car Rent</a>
+      <form class="d-flex mt-3">
+        <input type="text" class="form-control" style="width: 60em; margin-left: 20px; padding-left:20px;"
+          placeholder="Search" />
+        {{#if isLogin}}
+        <div class="dropdown drop-user">
+          <a class="" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fas fa-3x fa-user-circle"></i>
+          </a>
+
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            {{#if isAdmin}}
+            <li><a class="dropdown-item" href="/register-car">Add Cars</a></li>
+            {{/if}}
+            <li><a class="dropdown-item" href="/logout">Logout</a></li>
+          </ul>
+        </div>
+        {{else}}
+        <a href="/login" class="btn btn-secondary btn-signin">Sign In</a>
+        <a href="/register" class="btn btn-secondary btn-signup">Sign Up</a>
+        {{/if}}
+      </form>
+    </div>
+  </nav>
+</header>

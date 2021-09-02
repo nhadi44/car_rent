@@ -1,0 +1,4 @@
+1. DB name = db_rent_car
+2. Screenshoot pembuatan database dan tabel menggunakan query
+3. Input seluruh data kedalam table dengan query
+4. Tampilkan seluruh data pada tiap tabel dengan menggunakan query
