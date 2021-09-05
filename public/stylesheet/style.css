@@ -117,3 +117,12 @@
   color: rgba(23, 175, 56, 1);
   padding-bottom: 30px;
 }
+
+.list li a {
+  text-decoration: none;
+  color: white;
+}
+
+.list li {
+  list-style: none;
+}

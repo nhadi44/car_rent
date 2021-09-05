@@ -3,9 +3,10 @@ const http = require('http')
 const path = require('path')
 const hbs = require('hbs')
 const session = require('express-session')
+const multer = require('multer')
 
 const app = express()
-const port = 3000
+const port = 8000
 const server = http.createServer(app)
 
 app.use(express.json())
@@ -35,6 +36,28 @@ app.use(
         secret: 'Secret',
     })
 )
+
+// Multer
+const storage = multer.diskStorage({
+    destination: (req, file, cb) => {
+        cb(null, 'uploads')
+    },
+    filename: (req, file, cb) => {
+        cb(null, Date.now() + '-' + file.originalname.replace(/\s/g, ''));
+        // console.log(file)
+    }
+})
+
+const fileFilter = (req, file, cb) => {
+    if (file.mimetype == 'image/jpeg' || file.mimetype == 'image/png') {
+        cb(null, true);
+    } else {
+        cb(null, false);
+    }
+}
+
+const upload = multer({ storage: storage, fileFilter: fileFilter });
+
 
 app.use(function (req, res, next) {
     res.locals.message = req.session.message
@@ -194,7 +217,13 @@ app.get('/register-car', function (req, res) {
 })
 
 app.post('/register-car', uploadFile('photo'), function (req, res) {
-    const { name, plat_number, price, type_id, brand_id, photo } = req.body
+    const { name, plat_number, price, type_id, brand_id } = req.body
+    var photo = '';
+
+    if (req.file) {
+        photo = req.file.filename;
+    }
+
     if (name == '' || plat_number == '' || price == '' || type_id == '' || brand_id == '' || photo == '') {
         req.session.message = {
             type: 'danger',
@@ -214,7 +243,7 @@ app.post('/register-car', uploadFile('photo'), function (req, res) {
                 message: 'Create car data successfully'
             }
             res.redirect('/register-car')
-            // console.log(results)
+            console.log(results)
         })
     })
 })
@@ -231,6 +260,29 @@ app.get('/transaction-success', function (req, res) {
     res.render('transactionSuccess', {
         title,
         isLogin
+    })
+})
+
+app.get('/dashboard', (req, res) => {
+    // user = req.session.user.name
+    const no = 1
+    // const increment = no++
+    const title = `Dashboard `//${user}`
+    const greeting = `Wellcome`
+    res.render('admin', {
+        title,
+        greeting,
+        isLogin: req.session.isLogin,
+        no
+    })
+    // console.log()
+})
+
+app.get('/car', (req, res) => {
+    const title = 'Add new Car'
+    res.send('car', {
+        title,
+        isLogin: req.session.isLogin
     })
 })
 
