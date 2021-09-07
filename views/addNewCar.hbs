@@ -7,7 +7,10 @@
 {{/if}}
 
 {{> hero}}
-
+<div class="container">
+    <a href="/dashboard" class="btn btn-warning"
+        style="margin-left: 7.5em; margin-top: 20px; margin-bottom: -30px; width: 100px;">Back</a>
+</div>
 <div class="container d-flex">
     <form action="/register-car" class="register-car" method="POST" enctype="multipart/form-data">
         <h5 class="text-center">Register New Car</h5>
@@ -44,10 +47,6 @@
         <div class="mb-2 input-form">
             <label for="photo" class="form-label">Photo</label>
             <input type="file" class="form-control" id="photo" name="photo">
-        </div>
-        <div class="mb-2 input-form">
-            <label for="stock" class="form-label">Stock</label>
-            <input type="number" class="form-control" id="stock" name="stock">
         </div>
         <button type="submit" class="btn btn-danger btn-input">Submit</button>
     </form>

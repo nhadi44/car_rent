@@ -208,6 +208,7 @@ app.get('/register-car', function (req, res) {
             }
         })
     })
+    console.log(carBrand.length)
     res.render('addNewCar', {
         title,
         isLogin: req.session.isLogin,
@@ -265,17 +266,28 @@ app.get('/transaction-success', function (req, res) {
 
 app.get('/dashboard', (req, res) => {
     // user = req.session.user.name
-    const no = 1
-    // const increment = no++
-    const title = `Dashboard `//${user}`
-    const greeting = `Wellcome`
-    res.render('admin', {
-        title,
-        greeting,
-        isLogin: req.session.isLogin,
-        no
+    const title = `Dashboard`//${user}`
+    const greeting = `List Car`
+
+    const query = `SELECT tb_car.id,tb_car.name,tb_car.price, tb_brand.name as brand, tb_type.name as type
+    ,case when cast(tb_car.status as unsigned) = 0 then 'available' else 'not avaliable' end as status FROM tb_car 
+    inner join tb_brand on tb_brand.id = tb_car.id
+    inner join tb_type on tb_type.id = tb_car.id`
+
+    dbConnection.connect((err, conn) => {
+        if (err) throw err
+        conn.query(query, (err, results) => {
+            if (err) throw err
+            console.log(results)
+            res.render('admin', {
+                title,
+                greeting,
+                isLogin: req.session.isLogin,
+                results
+            })
+        })
     })
-    // console.log()
+
 })
 
 app.get('/car', (req, res) => {
