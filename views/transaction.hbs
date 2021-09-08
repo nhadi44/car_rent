@@ -4,27 +4,23 @@
 
 <div class="container">
     <div class="row">
-        <h4 class="fs-2">Transaction</h4>
+        <h4 class="fs-2">{{title}}</h4>
         <div class="col-4">
             <img src="../public/img/jpg/mitsubishi-expander.jpg" alt="" class="img-cars">
         </div>
         <div class="col-8">
-            <h4 class="fs-2 text-transaction">Toyota Xpander</h4>
-            <p class="fs-3 text-idr">IDR. 700.000</p>
-            <p class="fs-4 mt-2">Car Information</p>
-            <p class="fs-5 text-desc mb-3">Mitsubishi xpander dibekali mesin 1.5L 104PS dengan dimensi 4475 x 1750 x
-                1695
-                serta memiliki 4 jumlah silinder.
-                Dengan jenis transmisi MT dan jenis penggerak FWD.</p>
-            <form action="" class="form-rent">
+            {{#each results}}
+            <h4 class="fs-2 text-transaction">{{this.name}}</h4>
+            <p class="fs-3 text-idr">IDR. {{this.price}}</p>
+            <form action="/transaction" class="form-rent" method="POST">
                 <div class="row">
                     <div class="col-6">
                         <label for="inputDateBorrow" class="form-label">Borrow Date</label>
-                        <input type="date" class="form-control mt-1" name="borrowDate" id="borrowDate">
+                        <input type="date" class="form-control mt-1" name="borrow_date" id="borrow_date">
                     </div>
                     <div class="col-6">
                         <label for="inputDateBorrow" class="form-label">Return Date</label>
-                        <input type="date" class="form-control mt-1 mb-3" name="returnDate" id="returnDate">
+                        <input type="date" class="form-control mt-1 mb-3" name="return_date" id="return_date">
                     </div>
                 </div>
                 <div class="row mb-3">
@@ -32,21 +28,28 @@
                         <label for="qty" class="form-label mt-1">Quantity</label>
                         <div class="row g-3 align-items-center">
                             <div class="col-auto">
-                                <button class="btn btn-secondary" id="btnMin" name="btn-Min" type="button"> - </button>
+                                <button class="btn btn-secondary" id="btnMin" name="btn-Min" type="button"
+                                    onclick="decrement()"> - </button>
                             </div>
                             <div class="col-2">
-                                <input type="password" id="inputQty" name="inputQty" class="form-control" readonly>
+                                {{!-- <span id="inputQty"></span> --}}
+                                <input type="text" id="inputQty" name="inputQty" class="form-control text-center"
+                                    readonly>
                             </div>
                             <div class="col-auto">
-                                <button class="btn btn-secondary" id="btnPlus" name="btnPlus" type="button"> + </button>
+                                <button class="btn btn-secondary" id="btnPlus" name="btnPlus" type="button"
+                                    onclick="increment()"> + </button>
                             </div>
                         </div>
                     </div>
                 </div>
+                <input type="number" id="price" name="price" value="{{this.price}}" hidden>
+                {{/each}}
+                <input type="number" name="id" id="id" value="{{id}}" hidden>
                 <div class="row mb-3">
                     <div class="col">
                         <label for="totalPrice" class="form-label ">Total Price</label>
-                        <input type="number" class="form-control" name="totalPrice" id="totalPrice" readonly>
+                        <input type="number" class="form-control" name="sub_total" id="sub_total" readonly>
                     </div>
                 </div>
                 <button class="btn btn-danger btn-rent" type="submit">Checkout</button>
@@ -54,5 +57,34 @@
         </div>
     </div>
 </div>
+<script type="text/javascript">
+    var counter = 0
+    function increment() {
+        counter++
+        document.getElementById("inputQty").value = counter;
 
+        var price = document.getElementById("price").value
+        var total = price * counter;
+
+        document.getElementById("sub_total").value = total
+    }
+</script>
+<script type="text/javascript">
+    var counter = document.getElementById("inputQty").value
+    function decrement() {
+        counter--
+
+        document.getElementById("inputQty").value = counter
+
+        var price = document.getElementById("price").value
+        var total = price * counter;
+
+        document.getElementById("sub_total").value = total
+        if (document.getElementById("inputQty").value < 0) {
+            document.getElementById("inputQty").value = 0
+            document.getElementById("sub_total").value = 0
+            counter = 0
+        }
+    }
+</script>
 {{> footer}}

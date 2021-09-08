@@ -31,58 +31,19 @@
   {{!-- content --}}
   <div class="container mt-4 mb-5 mt-5">
     <div class="row">
+      {{#each car}}
       <div class="col">
         <div class="card" style="width: 18rem;">
-          <img src="../public/img/jpg/mitsubishi-expander.jpg" class="card-img-top" alt="...">
+          <img src="{{this.image}}" class="card-img-top" alt="...">
           <div class="card-body">
-            <h5 class="card-title">Mitsubishi Expander</h5>
-            <p class="card-text text-md">IDR. 700.000/days
-              <br>
-              <a href="">Details</a>
+            <h5 class="card-title">{{this.name}}</h5>
+            <p class="card-text text-md">{{this.price}}
             </p>
-            <a href="#" class="btn btn-danger" style="width: 100%;">Checkout</a>
+            <a href="/transaction/{{this.id}}" class="btn btn-danger" style="width: 100%;">Checkout</a>
           </div>
         </div>
       </div>
-      <div class="col">
-        <div class="card" style="width: 18rem;">
-          <img src="../public/img/jpg/suzuki-ertiga.jpg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Suzuki Ertiga</h5>
-            <p class="card-text text-md">IDR. 450.000/days
-              <br>
-              <a href="">Details</a>
-            </p>
-            <a href="#" class="btn btn-danger" style="width: 100%;">Checkout</a>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card" style="width: 18rem;">
-          <img src="../public/img/jpg/toyota-avanza-2019.jpg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Toyota Avanza 2019</h5>
-            <p class="card-text text-md">IDR. 550.000/days
-              <br>
-              <a href="">Details</a>
-            </p>
-            <a href="#" class="btn btn-danger" style="width: 100%;">Checkout</a>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card" style="width: 18rem;">
-          <img src="../public/img/jpg/toyota-kijang-inova.jpg" class="card-img-top" alt="...">
-          <div class="card-body">
-            <h5 class="card-title">Toyota Kijang Inova</h5>
-            <p class="card-text text-md">IDR. 500.000/days
-              <br>
-              <a href="">Details</a>
-            </p>
-            <a href="#" class="btn btn-danger" style="width: 100%;">Checkout</a>
-          </div>
-        </div>
-      </div>
+      {{/each}}
     </div>
   </div>
 </main>

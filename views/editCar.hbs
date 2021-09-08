@@ -1,0 +1,66 @@
+{{> header}}
+
+{{#if message}}
+<div class="alert alert-{{message.type}}" role="alert">
+    {{message.message}}
+</div>
+{{/if}}
+
+{{> hero}}
+<div class="container">
+    <a href="/dashboard" class="btn btn-warning"
+        style="margin-left: 7.5em; margin-top: 20px; margin-bottom: -30px; width: 100px;">Back</a>
+</div>
+<div class="container d-flex">
+    <form action="/edit-car" class="register-car" method="POST" enctype="multipart/form-data">
+        <h5 class="text-center">{{title}}</h5>
+        <div class="mb-2 input-form">
+            <label for="type" class="form-label">Type</label>
+            <select name="type_id" id="type_id" class="form-control form-select">
+                <option value="">Select car type</option>
+                {{#each carType}}
+                <option value="{{this.id}}" selected>{{this.name}}</option>
+                {{/each}}
+            </select>
+        </div>
+        <div class="mb-2 input-form">
+            <label for="type" class="form-label">Brand</label>
+            <select name="brand_id" id="brand_id" class="form-control form-select">
+                <option value="">Select car brand</option>
+                {{#each carBrand}}
+                <option value="{{this.id}}" selected>{{this.name}}</option>
+                {{/each}}
+            </select>
+        </div>
+        <div class="mb-2 input-form">
+            <label for="name" class="form-label">Car Name</label>
+            <input type="text" class="form-control" id="name" name="name" value="{{data.name}}">
+        </div>
+        <div class="mb-2 input-form">
+            <label for="plat_number" class="form-label">Plat Number</label>
+            <input type="text" class="form-control" id="plat_number" name="plat_number" value="{{data.plat_number}}">
+        </div>
+        <div class="mb-2 input-form">
+            <label for="price" class="form-label">Price</label>
+            <input type="number" class="form-control" id="price" name="price" value="{{data.price}}">
+        </div>
+        <div class="mb-2 input-form">
+            <label for="photo" class="form-label">Photo</label>
+            <input type="file" class="form-control" id="photo" name="photo" value="{{data.photo}}">
+        </div>
+        <div class="mb-2 input-form">
+            <label for="status" class="form-label">Status</label>
+            <select name="status" id="status" class="form-control form-select">
+                <option value="">Select Status</option>
+                <option value="0">Available</option>
+                <option value="1">Not Available</option>
+            </select>
+        </div>
+        <div class="mb-2 input-form">
+            <input type="number" name="id" id="id" value="{{data.id}}" hidden>
+        </div>
+        <button type="submit" class="btn btn-danger btn-input">Submit</button>
+    </form>
+</div>
+
+{{> footer}}

@@ -1,6 +1,13 @@
 {{> header}}
 {{> hero}}
 {{> navadmin}}
+
+{{#if message}}
+<div class="alert alert-{{message.type}} container" role="alert">
+    {{message.message}}
+</div>
+{{/if}}
+
 <div class="container">
     <h4>{{greeting}}</h4>
 </div>
@@ -10,6 +17,7 @@
             <tr>
                 <th>No</th>
                 <th>Car Name</th>
+                <th>Plat Number</th>
                 <th>Price</th>
                 <th>Type</th>
                 <th>Brand</th>
@@ -20,15 +28,17 @@
         <tbody>
             {{#each results}}
             <tr>
-                <td>{{this.id}}</td>
+                <td>{{@index}}</td>
                 <td>{{this.name}}</td>
+                <td>{{this.plat_number}}</td>
                 <td>{{this.price}}</td>
                 <td>{{this.brand}}</td>
                 <td>{{this.type}}</td>
                 <td class="text-capitalize">{{this.status}}</td>
                 <td>
-                    <a href="" class="btn btn-success"><i class="far fa-edit" style="padding-right:8px ;"></i>Edit</a>
-                    <a href="" class="btn btn-danger"><i class="far fa-trash-alt"
+                    <a href="/edit-car/{{this.id}}" class="btn btn-success"><i class="far fa-edit"
+                            style="padding-right:8px ;"></i>Edit</a>
+                    <a href="/delete-car/{{this.id}}" class="btn btn-danger"><i class="far fa-trash-alt"
                             style="padding-right:8px ;"></i>Delete</a>
                 </td>
             </tr>
